@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+# @ConfigurationProperties
+person:
+  id: 1
+  name: tom
+  likes:
+    - java
+    - game
+    - book
+    - girl
+  locs:
+    - {country: \u4E2D\u56FD}
+    - {country: \u7F8E\u56FD}
+    - {country: \u65E5\u672C}
+# @Value
+p_email: tom@qq.com
