@@ -16,36 +16,43 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 数据源配置
  * @author xiaopantx
  */
 @Configuration
 public class DruidConfig {
 
-    @ConfigurationProperties(prefix = "spring.datasource")
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource druidDataSource(){
         return new DruidDataSource();
     }
 
+    /**
+     * 德鲁伊监控Servlet
+     * @return
+     */
     @Bean
     public ServletRegistrationBean druidServletRegistrationBean(){
         ServletRegistrationBean<Servlet> servletRegistrationBean = new ServletRegistrationBean<>(new StatViewServlet(),"/druid/*");
         Map<String,String> initParams = new HashMap<>();
         initParams.put("loginUsername","admin");
         initParams.put("loginPassword","123456");
-        //后台允许谁可以访问
+        //druid监控访问限制
         //initParams.put("allow", "localhost")：表示只有本机可以访问
         //initParams.put("allow", "")：为空或者为null时，表示允许所有访问
         initParams.put("allow","");
-        //deny：Druid 后台拒绝谁访问
+        //deny：Druid 后台拒绝谁访问, 黑名单
         //initParams.put("msb", "192.168.1.20");表示禁止此ip访问
-
         servletRegistrationBean.setInitParameters(initParams);
         return servletRegistrationBean;
     }
 
-    //配置 Druid 监控 之  web 监控的 filter
-    //WebStatFilter：用于配置Web和Druid数据源之间的管理关联监控统计
+    /**
+     * 配置德鲁伊监控过滤器
+     * WebStatFilter：用于配置Web和Druid数据源之间的管理关联监控统计
+     * @return
+     */
     @Bean
     public FilterRegistrationBean webStatFilter() {
         FilterRegistrationBean bean = new FilterRegistrationBean();
