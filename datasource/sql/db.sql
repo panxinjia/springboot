@@ -3,7 +3,7 @@ create database spring_boot_datasource;
 
 create table t_user(
     id int primary key auto_increment,
-    name varchar(20) default "" not null ,
+    name varchar(20) default '' not null ,
     age int not null
 );
 
