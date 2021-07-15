@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--depends-on="" init-method="" lazy-init="" abstract="" autowire="" autowire-candidate="" scope="" factory-bean="">-->
+    <bean id="person" class="com.xiaopantx.boot.spring.annotation.demo.Person">
+
+        <property name="id" value="1"/>
+        <property name="name">
+            <value>tom</value>
+        </property>
+    </bean>
+
+    <bean class="com.xiaopantx.boot.spring.annotation.demo.MyBeanFactoryPostProcessor"/>
+
+<!--    <import resource="tx.xml"/>-->
+</beans>
