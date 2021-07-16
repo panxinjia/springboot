@@ -13,7 +13,6 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
         System.out.println("bean context 修改~");
         Object person  = beanFactory.getBean("person");
 
-
         Class<?> aClass = person.getClass();
         System.out.println(aClass.getName());
 

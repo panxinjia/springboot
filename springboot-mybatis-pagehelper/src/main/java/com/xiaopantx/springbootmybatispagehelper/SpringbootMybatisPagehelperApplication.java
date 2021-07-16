@@ -35,16 +35,18 @@ public class SpringbootMybatisPagehelperApplication implements CommandLineRunner
         List<User> users = userService.lambdaQuery().list();
         System.out.println("users = " + users);
 
+        boolean saveBatch = userService.saveBatch(Arrays.asList(
+                User.builder().name("user1").age(20).build(),
+                User.builder().name("user2").age(20).build(),
+                User.builder().name("user3").age(20).build(),
+                User.builder().name("user4").age(20).build(),
+                User.builder().name("user5").age(20).build()
+        ));
+
         User user = userService.getById(1);
         System.out.println("user = " + user);
 
-        boolean saveBatch = userService.saveBatch(Arrays.asList(
-                User.builder().name("user1").build(),
-                User.builder().name("user2").build(),
-                User.builder().name("user3").build(),
-                User.builder().name("user4").build(),
-                User.builder().name("user5").build()
-        ));
+
         System.out.println("saveBatch = " + saveBatch);
 
 //       2. 整合 pageHelper

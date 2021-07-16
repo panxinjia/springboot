@@ -18,7 +18,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     private UserMapper userMapper;
 
     public PageInfo<User> users (int pageNum, int pageSize) {
-        PageHelper.startPage(1, 1);
+        PageHelper.startPage(pageNum, pageSize);
         List<User> users = userMapper.selectList();
         PageInfo<User> page = new PageInfo<>(users);
         return page;
